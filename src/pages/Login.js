@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { flushSync } from 'react-dom'
 import { View, Image, Text, StyleSheet, SafeAreaView, TextInput, TouchableOpacity } from 'react-native'
 
-import logo from '../assets/logo.png'
+import logo from '../assets/logo.svg'
 
 export default function Login() {
     const [show, setShow] = useState(true)

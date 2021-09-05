@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, Image, AsyncStorage } from 'react-native'
 
-import preloadLogo from '../assets/logo.png'
+import preloadLogo from '../assets/logo.svg'
 export default function Preload({ navigation }) {
 
     useEffect(() => {
