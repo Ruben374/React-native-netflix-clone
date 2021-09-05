@@ -1,13 +1,31 @@
 import React, { useState } from 'react'
-import { flushSync } from 'react-dom'
-import { View, Image, Text, StyleSheet, SafeAreaView, TextInput, TouchableOpacity } from 'react-native'
+import { View, Image, Text, StyleSheet, SafeAreaView, TextInput, TouchableOpacity, AsyncStorage } from 'react-native'
+import { useEffect } from 'react/cjs/react.development'
 
 import logo from '../assets/logo.svg'
 
-export default function Login() {
+import api from '../services/api'
+
+export default function Login({ navigation }) {
     const [show, setShow] = useState(true)
     const [email, setEmail] = useState('')
-    const [password, setPasswor] = useState('')
+    const [password, setPassword] = useState('')
+
+    useEffect(() => {
+        AsyncStorage.getItem('user').then(user => {
+            if (user) {
+                navigation.navigate('Conta')
+            }
+        })
+    }, [])
+
+    async function handleSubmit() {
+        const response = await api.post('/login', { email, password })
+        const { _id } = response.data
+        await AsyncStorage.setItem('user', _id)
+
+        navigation.navigate('Contas')
+    }
 
     return (
         <SafeAreaView style={styles.container}>
@@ -25,6 +43,8 @@ export default function Login() {
                     keyboardType="email-address"
                     autoCorrect={false}
                     autoCapitalize='none'
+                    value={email}
+                    onChangeText={setEmail}
                 />
 
                 <View style={styles.password}>
@@ -35,6 +55,8 @@ export default function Login() {
                         secureTextEntry={show ? true : false}
                         autoCorrect={false}
                         autoCapitalize='none'
+                        value={password}
+                        onChangeText={setPassword}
                     />
 
                     <TouchableOpacity style={styles.buttonShow} onPress={() => { setShow(show => !show) }}>
@@ -42,7 +64,7 @@ export default function Login() {
                     </TouchableOpacity>
                 </View>
 
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={handleSubmit}>
                     <Text style={styles.buttonText}>Sign In</Text>
                 </TouchableOpacity>
 

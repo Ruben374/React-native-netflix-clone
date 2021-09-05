@@ -12,9 +12,6 @@ module.exports = {
             password
         })
 
-        console.log(logged)
-
-
         return res.json(logged)
     }
 }
