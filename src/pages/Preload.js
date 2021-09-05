@@ -17,6 +17,7 @@ export default function Preload({ navigation }) {
     return (
         <View style={styles.view}>
             <Image source={preloadLogo} style={styles.image}></Image>
+
         </View>
     )
 }
