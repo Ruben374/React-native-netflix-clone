@@ -3,8 +3,8 @@ import Tmdb from '../Tmdb'
 import { View, Text, StyleSheet,ImageBackground,TouchableOpacity} from 'react-native'
 import Logo from '../assets/logo-compact.png'
 import Header from './header'
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 export default (props) => {
 
@@ -18,14 +18,17 @@ export default (props) => {
       <ImageBackground style={styles.hero} source={{uri:`https://image.tmdb.org/t/p/original${props.item.backdrop_path}`}} >
      <View style={styles.container}>
       <Text style={styles.title}>{props.item.original_name}</Text>
-      <View>
-       <TouchableOpacity>
+      <View style={styles.vc}>
+       <TouchableOpacity style={styles.btn}>
          <Icon name='plus' color ='#fff' size={20}/>
-         <Text>Minha Lista</Text>
+         <Text style={styles.white}>Minha Lista</Text>
        </TouchableOpacity>
-          <TouchableOpacity>
+       <TouchableOpacity style={styles.btnn}>
+           <Text>► Assitir Agora</Text>
+       </TouchableOpacity>
+          <TouchableOpacity style={styles.btn}>
          <Icon name='information-outline' color ='#fff' size={20}/>
-         <Text>Saiba Mais</Text>
+         <Text style={styles.white}>Saiba Mais</Text>
        </TouchableOpacity>
       </View>
      </View>
@@ -61,5 +64,23 @@ const styles = StyleSheet.create({
 display: 'flex',
 flexDirection: 'column',
 alignItems: 'center',
+  },
+  vc:{
+      width:'100%',
+      height:'38',
+      flexDirection: 'row',
+      justifyContent:'space-evenly'
+  },
+  white:{
+      color:'white',
+  },
+  btn:{
+      justifyContent:'center',
+      alignItems: 'center'
+  },
+  btnn:{
+    width:300,
+    height:50,
+    backgroundColor:'red'  
   }
 })
