@@ -22,11 +22,11 @@ export default {
             },
             {
                 slug: 'treding',
-                title: 'Recomendados para Você',
+                title: 'Recomendados para Voçe',
                 items: await basicFetch(`/trending/all/week?languange=Pt_BR&api_key=${API_KEY}`)
             },
             {
-                slug: 'toprated',
+                slug: 'topreted',
                 title: 'Em alta',
                 items: await basicFetch(`/movie/top_rated?languange=Pt_BR&api_key=${API_KEY}`)
             },
@@ -58,5 +58,26 @@ export default {
 
         ];
 
+    },
+    getMovieInfo: async (movieId,Type) => {
+        let info = {}
+        if (movieId) {
+            switch (Type) {
+                case 'movie':
+                    info = await basicFetch(`/movie/${movieId}?languange=Pt_BR&api_key=${API_KEY}`)
+
+                    break
+
+                case 'tv':
+                    info = await basicFetch(`/tv/${movieId}?languange=Pt_BR&api_key=${API_KEY}`)
+                    break
+                    default:
+                        info=null
+                        break
+
+            }
+        }
+        return info
     }
+
 }
