@@ -5,16 +5,22 @@ import {
   Text,
   ScrollView,
   StyleSheet,
-  ImageBackground
+  ImageBackground,
+  TouchableOpacity,
+  FlatList
 } from 'react-native'
 import Header from '../components/header'
-import Hero from '../components/hero'
 import Featured from '../components/featured'
+import Hero from '../components/hero'
+import Preview from '../components/preview'
+import MovieRow from '../components/movieRow'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
-export default ({ navigation }) => {
+export default ({navigation}) => {
   const [movieList, setmovieList] = useState([])
   const [featuredData, setfeaturedData] = useState(null)
-
+ 
+ 
   useEffect(() => {
     const loadAll = async () => {
       let list = await Tmdb.getHomelist()
@@ -33,30 +39,30 @@ export default ({ navigation }) => {
   }, [])
 
   return (
-   
-    <View style={styles.container}>
-      <Header/>
+    <ScrollView style={styles.scrollView}>
+      <Header />
 
-      {featuredData && <Featured item={featuredData} />}
+      {featuredData && <Hero item={featuredData} />}
 
-      {movieList.map((item, key) => (
-        <Text style={styles.b}>{item.title}</Text>
-      ))}
-      
-    </View>
    
+        {movieList.map((item, key) => (
+          <MovieRow key={key} title={item.title} items={item.items} it={item} navigation={navigation}/>
+        ))}
+   
+    </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#000000',
+  scrollView: {
+    backgroundColor: '#000',
     flex: 1
   },
-  hero: {
-    height: 400,
-    width: '100%',
-    flex: 1
+  text: {
+    fontSize: 42,
+    color: 'white'
   },
-  b: { color: 'red' }
+
+  containerPreview: {},
+  flet: {}
 })
