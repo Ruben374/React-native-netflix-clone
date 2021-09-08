@@ -7,7 +7,7 @@ export default function Preload({ navigation }) {
     useEffect(() => {
         AsyncStorage.getItem('user').then(user => {
             if (user) {
-                navigation.navigate('')
+                navigation.navigate('Contas')
             } else {
                 navigation.navigate('Login')
             }
@@ -17,6 +17,7 @@ export default function Preload({ navigation }) {
     return (
         <View style={styles.view}>
             <Image source={preloadLogo} style={styles.image}></Image>
+
         </View>
     )
 }
@@ -33,6 +34,7 @@ const styles = StyleSheet.create({
 
     image: {
         width: 200,
-        height: 50
+        height: 50,
+
     },
 })
