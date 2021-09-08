@@ -7,15 +7,13 @@ import Home from './pages/home'
 import Contas from './pages/Contas'
 
 const Routes = createAppContainer(
-    createSwitchNavigator({
-      
-       
-        Preload,
-        Login,
-        Contas,
-         Home,
-          Movie
-    })
+  createSwitchNavigator({
+    Preload,
+    Login,
+    Contas,
+    Home,
+    Movie
+  })
 )
 
 export default Routes
