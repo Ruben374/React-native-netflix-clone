@@ -8,10 +8,11 @@ import Contas from './pages/Contas'
 
 const Routes = createAppContainer(
   createSwitchNavigator({
-    Preload,
-    Login,
-    Contas,
+     Login,
     Home,
+    Preload,
+   
+    Contas,
     Movie
   })
 )
