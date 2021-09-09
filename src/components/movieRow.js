@@ -13,9 +13,10 @@ import {
 
 export default function Row(props,{ navigation }) {
 
-  const handleClick=(p,v,c)=> {
-    console.log('clicou')
-      props.navigation.navigate('Movie',{path:p,name:v,description:c})
+
+  const handleClick=(p,v,c,g)=> {
+    console.log(g)
+      props.navigation.navigate('Movie',{path:p,name:v,description:c,item:g})
   }
   return (
     <View style={styles.container}>
@@ -26,7 +27,7 @@ export default function Row(props,{ navigation }) {
         style={styles.lista}
         data={props.items.results}
         renderItem={({item,index})=>(
- <TouchableOpacity onPress={()=>{handleClick(item.backdrop_path,item.name || item.title,item.overview)}}>
+ <TouchableOpacity onPress={()=>{handleClick(item.backdrop_path,item.name || item.title,item.overview,item)}}>
         <ImageBackground
           style={[styles.capa, {marginRight:10,marginLeft:index == 0? 20 : 0}]}
           source={{

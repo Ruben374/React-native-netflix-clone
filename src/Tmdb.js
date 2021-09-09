@@ -78,6 +78,26 @@ export default {
             }
         }
         return info
+    },
+       getCastInfo: async (movieId,Type) => {
+        let info = {}
+        if (movieId) {
+            switch (Type) {
+                case 'movie':
+                    info = await basicFetch(`/movie/${movieId}?languange=Pt_BR&api_key=${API_KEY}&append_to_response=credits`)
+
+                    break
+
+                case 'tv':
+                    info = await basicFetch(`/tv/${movieId}?languange=Pt_BR&api_key=${API_KEY}&append_to_response=credits`)
+                    break
+                    default:
+                        info=null
+                        break
+
+            }
+        }
+        return info
     }
 
 }
