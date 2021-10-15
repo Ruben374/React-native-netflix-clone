@@ -1,7 +1,7 @@
 
-# Netflix-clone
+# Netflix-clone with react-native
 
-### It´s a simple netflix-clone developed with react.js
+### It´s a simple netflix-clone developed with react-native
 
 >Status:
 developing ⌚
