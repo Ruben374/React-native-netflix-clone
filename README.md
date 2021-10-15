@@ -23,5 +23,7 @@ It uses [The MovieDB Api](https://www.themoviedb.org/documentation/api) to searc
 
 Please feel free to create a pull request and submit any issues!
 
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/62626341/137478890-e0f9f616-7159-42dc-aaf9-99b0b7ce967d.gif)
+
 
 
